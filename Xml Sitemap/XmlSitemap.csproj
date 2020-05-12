@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>MarcelDigital.Umbraco.XmlSitemap</RootNamespace>
+    <AssemblyName>MarcelDigital.Umbraco.XmlSitemap</AssemblyName>
+    <ApplicationIcon />
+    <StartupObject />
+    <Company>Marcel Digital</Company>
+    <Authors>Marcel Digital</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <NoWarn />
+  </PropertyGroup>
+
+</Project>
