@@ -2,8 +2,7 @@
 using MarcelDigital.Umbraco.XmlSitemap.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace XmlSitemap.Test.Models
-{
+namespace XmlSitemap.Test.Models {
     [TestClass]
     public class UrlSetTest {
         private const string XhtmlNamespace = "{http://www.w3.org/2000/xmlns/}xhtml";

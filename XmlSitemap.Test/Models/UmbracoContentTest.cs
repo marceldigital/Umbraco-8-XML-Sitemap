@@ -2,11 +2,9 @@
 using MarcelDigital.Umbraco.XmlSitemap.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace XmlSitemap.Test.Models
-{
+namespace XmlSitemap.Test.Models {
     [TestClass]
-    public class UmbracoContentTest
-    {
+    public class UmbracoContentTest {
         private TimeSpan _currentMachineOffset;
 
         [TestInitialize]

@@ -5,11 +5,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Umbraco.Core.Models.PublishedContent;
 
-namespace XmlSitemap.Test.Filters
-{
+namespace XmlSitemap.Test.Filters {
     [TestClass]
-    public class DocumentTypeWhitelistFilterTest
-    {
+    public class DocumentTypeWhitelistFilterTest {
         private DocumentTypeWhitelistFilter _sut;
         private IList<IPublishedContent> _testContent;
         private const string GoodDocumentTypeAlias = "GoodDocType";

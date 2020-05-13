@@ -7,8 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Umbraco.Core.Models.PublishedContent;
 
-namespace XmlSitemap.Test.Engines
-{
+namespace XmlSitemap.Test.Engines {
     [TestClass]
     public class UmbracoEngineTest {
         private UmbracoEngine _sut;

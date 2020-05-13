@@ -5,8 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Umbraco.Core.Models.PublishedContent;
 
-namespace XmlSitemap.Test.Filters
-{
+namespace XmlSitemap.Test.Filters {
     [TestClass]
     public class NoTemplateFilterTest {
         private NoTemplateFilter _sut;
