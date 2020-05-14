@@ -16,6 +16,11 @@ namespace MarcelDigital.Umbraco.XmlSitemap.Initializers {
                 content = _umbracoHelper.Content(domain.ContentId);
             }
 
+            // Content for the domain isn't found. Fallback to first website.
+            if (content == null) {
+                content = _umbracoHelper.ContentAtRoot().FirstOrDefault();
+            }
+
             return content?.DescendantsOrSelf() ?? new List<IPublishedContent>();
         }
     }

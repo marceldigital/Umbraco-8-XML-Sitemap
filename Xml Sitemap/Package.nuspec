@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>MarcelDigital.Umbraco.XmlSitemap</id>
+    <version>0.1</version>
+    <title>Marcel Digital Umbraco 8 XML Sitemap</title>
+    <authors>Marcel Digital</authors>
+    <owners>Marcel Digital</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/marceldigital/Umbraco-8-XML-Sitemap</projectUrl>
+    <iconUrl>http://marceldigital.blob.core.windows.net/nuget/logo-64x64.png</iconUrl>
+    <description>Umbraco 8 extension to output an xml sitemap.</description>
+    <releaseNotes>Initial setup.</releaseNotes>
+    <copyright>Copyright ©2020 Marcel Digital</copyright>
+    <tags>Umbraco Sitemap</tags>
+    <dependencies>
+      <dependency id="UmbracoCms.Core" version="8.0" />
+    </dependencies>
+  </metadata>
+</package>

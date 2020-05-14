@@ -32,6 +32,7 @@ namespace MarcelDigital.Umbraco.XmlSitemap.Configuration {
             : this(
                 (UmbracoXmlSitemapSection) ConfigurationManager.GetSection(Constants.ConfigurationSectionName),
                 new UmbracoHelper(UmbracoContext.Current)) {}
+                //https://our.umbraco.com/forum/extending-umbraco-and-using-the-api/95917-getting-the-current-umbracocontext-in-v8
         */
         internal WebConfigDependencyFactory(IUmbracoXmlSitemapSection config, UmbracoHelper umbracoHelper) {
             _config = config;
