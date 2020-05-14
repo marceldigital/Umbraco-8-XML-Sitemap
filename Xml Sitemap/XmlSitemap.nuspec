@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/marceldigital/Umbraco-8-XML-Sitemap</projectUrl>
-    <iconUrl>http://marceldigital.blob.core.windows.net/nuget/logo-64x64.png</iconUrl>
+    <icon>images\icon.png</icon>
     <description>Umbraco 8 extension to output an xml sitemap.</description>
     <releaseNotes>Initial setup.</releaseNotes>
     <copyright>Copyright ©2020 Marcel Digital</copyright>
@@ -18,4 +18,7 @@
       <dependency id="UmbracoCms.Core" version="8.0" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="images\icon.png" target="images\" />
+  </files>
 </package>
