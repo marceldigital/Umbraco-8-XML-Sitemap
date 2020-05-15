@@ -3,10 +3,8 @@ using System.Web;
 using System.Web.Caching;
 using System.Xml.Linq;
 
-namespace MarcelDigital.Umbraco.XmlSitemap.Optimization
-{
-    public class HostnameCache : ISitemapCache
-    {
+namespace MarcelDigital.Umbraco.XmlSitemap.Optimization {
+    public class HostnameCache : ISitemapCache {
         /// <summary>
         ///     Unique key to put in the cache to identify the sitemap
         /// </summary>
@@ -28,8 +26,7 @@ namespace MarcelDigital.Umbraco.XmlSitemap.Optimization
         ///     Constructor for the cache.
         /// </summary>
         /// <param name="httpContext">The current http context.</param>
-        public HostnameCache(HttpContext httpContext)
-        {
+        public HostnameCache(HttpContext httpContext) {
             _httpContext = httpContext;
             CacheKey = $"{BaseCacheKey}-{_httpContext?.Request?.Url?.Host ?? "unkown"}";
         }

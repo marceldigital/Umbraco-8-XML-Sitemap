@@ -236,6 +236,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Extensions\XmlSitemapContentProviderExtensions.cs" />
+    <Compile Include="Collections\XmlSitemapContentProviderCollection.cs" />
+    <Compile Include="Collections\XmlSitemapContentProviderCollectionBuilder.cs" />
+    <Compile Include="Composers\DefaultXmlSitemapComposer.cs" />
     <Compile Include="Configuration\Collections\DocumentTypesCollection.cs" />
     <Compile Include="Configuration\Collections\FiltersCollection.cs" />
     <Compile Include="Configuration\Collections\PropertiesCollection.cs" />
@@ -251,12 +255,14 @@
     <Compile Include="Configuration\WebConfigDependencyFactory.cs" />
     <Compile Include="Engines\IContentEngine.cs" />
     <Compile Include="Engines\UmbracoEngine.cs" />
+    <Compile Include="Filters\Enums\FilterOperator.cs" />
     <Compile Include="Filters\DocumentTypeBlacklistFilter.cs" />
     <Compile Include="Filters\DocumentTypeListFilter.cs" />
     <Compile Include="Filters\DocumentTypeWhitelistFilter.cs" />
     <Compile Include="Filters\IFilter.cs" />
     <Compile Include="Filters\NoTemplateFilter.cs" />
     <Compile Include="Filters\PropertiesFilter.cs" />
+    <Compile Include="Filters\PropertyFilterOptions.cs" />
     <Compile Include="Generators\IXmlSitemapGenerator.cs" />
     <Compile Include="Generators\XmlSitemapGenerator.cs" />
     <Compile Include="Initializers\AllRootInitializer.cs" />
@@ -271,6 +277,9 @@
     <Compile Include="Optimization\HostnameCache.cs" />
     <Compile Include="Optimization\HttpContextCache.cs" />
     <Compile Include="Optimization\ISitemapCache.cs" />
+    <Compile Include="Providers\DefaultUmbracoSitemapContentProvider.cs" />
+    <Compile Include="Providers\IXmlSitemapContentProvider.cs" />
+    <Compile Include="Providers\UmbracoSitemapContentProviderBase.cs" />
     <Compile Include="XmlSitemapHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

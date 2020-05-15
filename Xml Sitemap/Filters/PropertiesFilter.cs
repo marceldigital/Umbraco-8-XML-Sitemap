@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MarcelDigital.Umbraco.XmlSitemap.Configuration.Elements;
-using MarcelDigital.Umbraco.XmlSitemap.Configuration.Enums;
+using MarcelDigital.Umbraco.XmlSitemap.Filters.Enums;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
@@ -14,9 +13,9 @@ namespace MarcelDigital.Umbraco.XmlSitemap.Filters {
         /// <summary>
         ///     This properties from the configuration
         /// </summary>
-        private readonly IList<PropertyElement> _properties;
+        private readonly IList<PropertyFilterOptions> _properties;
 
-        public PropertiesFilter(IList<PropertyElement> properties) {
+        public PropertiesFilter(IList<PropertyFilterOptions> properties) {
             _properties = properties;
         }
 

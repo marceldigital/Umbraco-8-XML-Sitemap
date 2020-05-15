@@ -10,7 +10,7 @@ using MarcelDigital.Umbraco.XmlSitemap.Optimization;
 
 namespace MarcelDigital.Umbraco.XmlSitemap {
     /// <summary>
-    ///     Generetes the Xml sitemap for the umbraco website.
+    ///     Generates the Xml sitemap for the umbraco website.
     /// </summary>
     public class XmlSitemapHandler : IHttpHandler {
         /// <summary>
