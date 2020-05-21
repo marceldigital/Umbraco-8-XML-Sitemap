@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Web;
 using System.Xml;
@@ -7,6 +8,7 @@ using MarcelDigital.Umbraco.XmlSitemap.Configuration;
 using MarcelDigital.Umbraco.XmlSitemap.Engines;
 using MarcelDigital.Umbraco.XmlSitemap.Generators;
 using MarcelDigital.Umbraco.XmlSitemap.Optimization;
+using Umbraco.Core.Logging;
 
 namespace MarcelDigital.Umbraco.XmlSitemap {
     /// <summary>
@@ -35,10 +37,28 @@ namespace MarcelDigital.Umbraco.XmlSitemap {
         private readonly IContentEngine _contentEngine;
 
         /// <summary>
+        ///     The logger for errors or debug messages. 
+        /// </summary>
+        private readonly ILogger _logger;
+
+        /// <summary>
         ///     Constructor for the sitemap handler
         /// </summary>
         public XmlSitemapHandler() {
-            // TODO
+            /*
+            UmbracoContext.EnsureContext(
+                new HttpContextWrapper(HttpContext.Current),
+                ApplicationContext.Current,
+                true);
+            */
+            // TODO context ^. use providers. cleanup configuration folder and maybe file/folder organizing in project. update/add tests. 
+
+            var factory = new WebConfigDependencyFactory();
+
+            _sitemapCache = factory.CreateCache();
+            _generator = factory.CreateGenerator();
+            _contentEngine = factory.CreateEngine();
+            _logger = factory.CreateLogger();
         }
 
         /// <summary>
@@ -48,6 +68,7 @@ namespace MarcelDigital.Umbraco.XmlSitemap {
             _sitemapCache = dependencyFactory.CreateCache();
             _generator = dependencyFactory.CreateGenerator();
             _contentEngine = dependencyFactory.CreateEngine();
+            _logger = dependencyFactory.CreateLogger();
         }
 
         /// <summary>
@@ -64,15 +85,37 @@ namespace MarcelDigital.Umbraco.XmlSitemap {
         /// </summary>
         /// <param name="context">Current http context</param>
         public void ProcessRequest(HttpContextBase context) {
-            // TODO
+            _logger.Debug<XmlSitemapHandler>("Processing xml sitemap request.");
+            try {
+                var sitemap = GenerateSitemapXml();
+
+                InsertSitemapIntoResponse(context, sitemap);
+            } catch (Exception e) {
+                _logger.Error<XmlSitemapHandler>("An error occured returning the sitemap: {e.Message}", e);
+                throw;
+            }
+            _logger.Debug<XmlSitemapHandler>("Completed xml sitemap request.");
         }
 
         /// <summary>
         ///     Generates the sitemap and inserts it in the response
         /// </summary>
         private XDocument GenerateSitemapXml() {
-            // TODO
-            return null;
+            XDocument sitemap;
+
+            if (!_sitemapCache.IsInCache()) {
+                _logger.Debug<XmlSitemapHandler>("Xml sitemap found is not in the cache, generating...");
+                var content = _contentEngine.Run();
+
+                sitemap = _generator.Generate(content);
+
+                _sitemapCache.Insert(sitemap);
+            } else {
+                _logger.Debug<XmlSitemapHandler>("Xml sitemap is in the cache, retrieving...");
+                sitemap = _sitemapCache.Retrieve();
+            }
+
+            return sitemap;
         }
 
         /// <summary>

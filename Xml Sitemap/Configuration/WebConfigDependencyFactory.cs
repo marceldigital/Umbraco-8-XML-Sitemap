@@ -10,7 +10,9 @@ using MarcelDigital.Umbraco.XmlSitemap.Filters;
 using MarcelDigital.Umbraco.XmlSitemap.Generators;
 using MarcelDigital.Umbraco.XmlSitemap.Initializers;
 using MarcelDigital.Umbraco.XmlSitemap.Optimization;
+using Umbraco.Core.Logging;
 using Umbraco.Web;
+using Umbraco.Web.Composing;
 
 namespace MarcelDigital.Umbraco.XmlSitemap.Configuration {
     /// <summary>
@@ -27,16 +29,24 @@ namespace MarcelDigital.Umbraco.XmlSitemap.Configuration {
         /// </summary>
         private readonly UmbracoHelper _umbracoHelper;
 
-        /*
         internal WebConfigDependencyFactory()
             : this(
                 (UmbracoXmlSitemapSection) ConfigurationManager.GetSection(Constants.ConfigurationSectionName),
-                new UmbracoHelper(UmbracoContext.Current)) {}
-                //https://our.umbraco.com/forum/extending-umbraco-and-using-the-api/95917-getting-the-current-umbracocontext-in-v8
-        */
+                Current.UmbracoHelper) {}
+
         internal WebConfigDependencyFactory(IUmbracoXmlSitemapSection config, UmbracoHelper umbracoHelper) {
             _config = config;
             _umbracoHelper = umbracoHelper;
+        }
+
+        public ILogger CreateLogger() {
+            var logger = Current.Logger;
+
+            if (logger == null) {
+                throw new NullReferenceException("Umbraco XML Sitemap could not retrieve current ILogger");
+            }
+
+            return logger;
         }
 
         public IContentEngine CreateEngine() {
@@ -63,7 +73,7 @@ namespace MarcelDigital.Umbraco.XmlSitemap.Configuration {
             var generator = Activator.CreateInstance(_config.Generator) as IXmlSitemapGenerator;
 
             if (generator == null) {
-                throw new ConfigurationErrorsException("Umbraco XML Sitemap cache has to implement ISitemapCache");
+                throw new ConfigurationErrorsException("Umbraco XML Sitemap cache has to implement IXmlSitemapGenerator");
             }
 
             return generator;
